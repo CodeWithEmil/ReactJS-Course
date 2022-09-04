@@ -11,11 +11,19 @@ const firstBook = {
     author: "Maurine Frank"
 };
 
+const secondBook = {
+    img: "https://images-na.ssl-images-amazon.com/images/I/41g9RfNVZBL._SX320_BO1,204,203,200_.jpg",
+    title: "Ugly Love: A Novel",
+    author: "Colleen Hoover",
+};
+
+
+//Code
 function BookList() {
     return (
         <section className="booklist">
-            <Book job = "programmer" />
-            <Book title = "random title" number = {22} />
+            <Book img = {firstBook.img} title = {firstBook.title} author = {firstBook.author} />
+            <Book img = {secondBook.img} title = {secondBook.title} author = {secondBook.author} />
         </section>
     )
 }
@@ -24,14 +32,11 @@ const Book = (props) => {
     return (
         <article className = "book">
             <img
-                src={img}
+                src={props.img}
                 alt=""
             />
-            <h1>{title}</h1>
-            <h4>{author}</h4>
-            <p>{props.job}</p>
-            <p>{props.title}</p>
-            <p>{props.number}</p>
+            <h1>{props.title}</h1>
+            <h4>{props.author}</h4>
         </article>
     )
 }
