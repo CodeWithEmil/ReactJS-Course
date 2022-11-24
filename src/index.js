@@ -36,29 +36,37 @@ const books = [
 function BookList() {
     return (
         <section className="booklist">
-            {books.map((book) => {
-                const {img, title, author} = book;
+            {books.map((book, index) => {
                 return (
-                    <Book key={book.id} bookProp={book} />
+                    <Book key={book.id} {...book} />
                 );
             })}
         </section>
     )
 }
 
-const Book = (props) => {
-    const {img, title, author} = props.bookProp;
+const Book = ({ img, title, author }) => {
+    const clickHandler = (e) => {
+        console.log(e.target);
+        alert("Hello world!");
+    };
+
+    const complexExample = (author) => {
+        alert(author);
+    };
+
     return (
-        <article className = "book">
-            <img
-                src={img}
-                alt=""
-                />
-            <h1>{title}</h1>
+        <article className="book">
+            <img src={img} alt="" />
+            <h1 onClick = {() => {
+                alert("hello world from h1!")
+            }}>{title}</h1>
             <h4>{author}</h4>
+            <button type = "button" onClick={clickHandler}>Reference Example</button>
+            <button onClick = {() => complexExample(author)}>more complex example</button>
         </article>
-    )
-}
+    );
+};
 
 ReactDOM.render(<BookList />, document.getElementById("root"));
 
